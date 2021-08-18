@@ -45,3 +45,21 @@ library(caret)
 library(rpart)
 library(glmnet)
 library(e1071)
+
+
+
+#Importing data set CSV to Data set
+
+OblackFriday <- as.data.frame(read.csv(file = "Data/blackfriday.csv"))
+str(OblackFriday)
+as.data.frame(names(OblackFriday),str(OblackFriday)[2])
+
+dim(OblackFriday)
+
+str(OblackFriday)
+
+head(OblackFriday)
+
+nrow(OblackFriday)
+
+sum(complete.cases(OblackFriday))

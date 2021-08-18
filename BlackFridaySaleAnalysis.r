@@ -180,3 +180,76 @@ length(FilterBlackFriday$User_ID)
 
 write.csv(Cleaned_BlackFriday,'Data/Cleaned_BlackFriday.csv')
 
+
+
+
+#userVsAge <- subset(Cleaned_BlackFriday,select= c(Age))
+
+userVsAge <- table(Cleaned_BlackFriday$Age)
+userVsAge
+
+barplot(userVsAge,
+        main = "User count per Age",
+        ylab = "Counts",
+        cex.names = 1, 
+)
+
+PurchasePerAge <- table(subset(Cleaned_BlackFriday,
+                               select = c(Purchase,Age)))
+
+
+barplot(PurchasePerAge,
+        main = "Purchase per Age",
+        ylab = "Counts",
+        cex.names = 1, 
+)
+
+n_distinct(Cleaned_BlackFriday$Occupation)
+
+nrow(Cleaned_BlackFriday)
+
+
+Sam_Cleaned_BlackFriday <- sample_n(Cleaned_BlackFriday, 
+                                    100000, 
+                                    replace = TRUE, 
+                                    prob = NULL)
+nrow(Sam_Cleaned_BlackFriday)
+
+corrplot(cor(Cleaned_BlackFriday), method="circle")
+corrplot(cor(Cleaned_BlackFriday), method="color", order = "AOE")
+
+
+## making sure the varity is not changed drastically
+
+n_distinct(Cleaned_BlackFriday$User_ID) 
+n_distinct(Sam_Cleaned_BlackFriday$User_ID)
+
+n_distinct(Cleaned_BlackFriday$Product_ID)
+n_distinct(Sam_Cleaned_BlackFriday$Product_ID)
+
+n_distinct(Cleaned_BlackFriday$Gender)
+n_distinct(Sam_Cleaned_BlackFriday$Gender)
+
+n_distinct(Cleaned_BlackFriday$Age)
+n_distinct(Sam_Cleaned_BlackFriday$Age)
+
+n_distinct(Cleaned_BlackFriday$Occupation)
+n_distinct(Sam_Cleaned_BlackFriday$Occupation)
+
+n_distinct(Cleaned_BlackFriday$City_Category)
+n_distinct(Sam_Cleaned_BlackFriday$City_Category)
+
+n_distinct(Cleaned_BlackFriday$Marital_Status)
+n_distinct(Sam_Cleaned_BlackFriday$Marital_Status)
+
+n_distinct(Cleaned_BlackFriday$Product_Category)
+n_distinct(Sam_Cleaned_BlackFriday$Product_Category)
+
+n_distinct(Cleaned_BlackFriday$Purchase)
+n_distinct(Sam_Cleaned_BlackFriday$Purchase)
+
+
+str(Sam_Cleaned_BlackFriday)
+
+write.csv(Sam_Cleaned_BlackFriday,'Data/Sampled_Cleaned_BlackFriday.csv')
+

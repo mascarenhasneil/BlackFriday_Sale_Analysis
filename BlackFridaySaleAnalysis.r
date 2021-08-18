@@ -253,3 +253,214 @@ str(Sam_Cleaned_BlackFriday)
 
 write.csv(Sam_Cleaned_BlackFriday,'Data/Sampled_Cleaned_BlackFriday.csv')
 
+
+# VISUALIZATION
+
+ggplot(Sam_Cleaned_BlackFriday, 
+       aes(Gender,
+           Product_Category,
+           fill=Gender))+geom_col(width=1)+facet_wrap(~Age)+labs(title ="Age Vs Gender Vs Product")
+
+
+# Summarize by City - To focus which City generates more revenue and also avg purchase per shopper
+avg_district = as.data.frame(Cleaned_BlackFriday %>% 
+                                 group_by(City_Category) %>% 
+                                 dplyr:: summarise(`Product Revenue` = sum(Purchase), 
+                                                   `Number of Distinct shoppers` = n_distinct(`User_ID`), 
+                                                   `Avg. Purchase per Shopper` = `Product Revenue`/`Number of Distinct shoppers`, 
+                                                   `Number of Product` = n(),  
+                                                   `Avg. Unit Price per Product` = `Product Revenue`/`Number of Product`,
+                                                   `Product per Shopper` = round(`Number of Product`/`Number of Distinct shoppers`,0)))
+
+
+
+
+## I am trying to summarize by the city - To get to know which City is generating more revenues and what is the average purchase per user.
+
+
+
+
+
+
+p1 = Sam_Cleaned_BlackFriday %>% filter(City_Category == 'A') %>% group_by(City_Category,Age) %>% summarise(n = n_distinct(User_ID)) %>%mutate(prop = percent(n/1045)) %>% ggplot(aes(x="", y=n, fill=Age)) + geom_bar(width = 1, stat = 'identity', position= "stack") + coord_polar("y") + geom_text(aes(label = prop), position = position_stack(vjust = 0.8), size = 3) + theme_void() + theme(plot.title = element_text(size=14, face="bold"), axis.text = element_blank(), axis.ticks = element_blank(), panel.grid  = element_blank(), axis.title=element_blank(), legend.title = NULL, legend.position="bottom") + labs(subtitle = "City A")+ labs(tag = 'Figure 1\n') + labs(title = 'Age Distribution for Each City')
+
+p2 = Sam_Cleaned_BlackFriday %>% filter(City_Category == 'B') %>% group_by(City_Category,Age) %>% summarise(n = n_distinct(User_ID)) %>%mutate(prop = percent(n/1707)) %>% ggplot(aes(x="", y=n, fill=Age)) + geom_bar(width = 1, stat = 'identity', position= "stack") + coord_polar("y") + geom_text(aes(label = prop), position = position_stack(vjust = 0.8), size = 3) + theme_void() + theme(plot.title = element_text(size=14, face="bold"), axis.text = element_blank(), axis.ticks = element_blank(), panel.grid  = element_blank(), axis.title=element_blank(), legend.title = NULL, legend.position="bottom") + labs(subtitle = "City B")
+
+p3 = Sam_Cleaned_BlackFriday %>% filter(City_Category == 'C') %>% group_by(City_Category,Age) %>% summarise(n = n_distinct(User_ID)) %>%mutate(prop = percent(n/3139)) %>% ggplot(aes(x="", y=n, fill=Age)) + geom_bar(width = 1, stat = 'identity', position= "stack") + coord_polar("y") + geom_text(aes(label = prop), position = position_stack(vjust = 0.8), size = 3) + theme_void() + theme(plot.title = element_text(size=14, face="bold"), axis.text = element_blank(), axis.ticks = element_blank(), panel.grid  = element_blank(), axis.title=element_blank(), legend.title = NULL, legend.position="bottom") + labs(subtitle = "City C")
+
+
+
+Pie1 = Sam_Cleaned_BlackFriday %>% filter(City_Category == 'A') %>% group_by(City_Category,Age) %>% summarise(n = n_distinct(User_ID))  %>%                                  ggplot(aes(x="", y=n, fill=Age)) + geom_bar(width = 1, stat = 'identity', position= "stack") + coord_polar("y") +                                                                                  theme_void() + theme(plot.title = element_text(size=14, face="bold"), axis.text = element_blank(), axis.ticks = element_blank(), panel.grid  = element_blank(), axis.title=element_blank(), legend.title = NULL, legend.position="bottom") + labs(subtitle = "City A")+ labs(tag = 'Figure 1\n') + labs(title = 'Age Distribution for Each City')
+
+Pie2 = Sam_Cleaned_BlackFriday %>% filter(City_Category == 'B') %>% group_by(City_Category,Age) %>% summarise(n = n_distinct(User_ID))  %>% ggplot(aes(x="", y=n, fill=Age)) + geom_bar(width = 1, stat = 'identity', position= "stack") + coord_polar("y") +  theme_void() + theme(plot.title = element_text(size=14, face="bold"), axis.text = element_blank(), axis.ticks = element_blank(), panel.grid  = element_blank(), axis.title=element_blank(), legend.title = NULL, legend.position="bottom") + labs(subtitle = "City B")
+
+Pie3 = Sam_Cleaned_BlackFriday %>% filter(City_Category == 'C') %>% group_by(City_Category,Age) %>% summarise(n = n_distinct(User_ID))  %>% ggplot(aes(x="", y=n, fill=Age)) + geom_bar(width = 1, stat = 'identity', position= "stack") + coord_polar("y") +  theme_void() + theme(plot.title = element_text(size=14, face="bold"), axis.text = element_blank(), axis.ticks = element_blank(), panel.grid  = element_blank(), axis.title=element_blank(), legend.title = NULL, legend.position="bottom") + labs(subtitle = "City C")
+
+
+
+ggarrange(p1,p2,p3, ncol = 3, nrow = 1, common.legend = TRUE, legend = 'bottom', align = 'v', widths = c(1, 1, 1))
+ggarrange(p1, ncol = 1, nrow = 1, common.legend = TRUE, legend = 'bottom', align = 'v', widths = c(5, 5, 5))
+
+
+Counts <- count(Cleaned_BlackFriday,vars="Age")
+
+
+
+class(Cleaned_BlackFriday)
+
+Countshead <- arrange(Counts, desc(Counts$freq))
+Countshead <
+    class(Countshead)
+Countstail <- tail(Counts,30)
+Countstail
+
+
+
+barplot(Countshead, col = "cyan4", main = "userid top 10 and bottom 10 frequency", las = "2",cex.names=0.6)
+
+arrange(amazon, desc(amazon$User_ID))
+user123
+
+
+df1 = Cleaned_BlackFriday %>% group_by(User_ID) %>% dplyr::summarise(`Shopper Purchase` = sum(Purchase),`Number of Products Sold` = n())
+head(df1)
+blackfriday_user = select(Cleaned_BlackFriday, User_ID, Gender, Age, City_Category, Marital_Status, Occupation)
+blackfriday_user = unique(blackfriday_user)
+blackfriday_user = blackfriday_user %>% left_join(df1, by = 'User_ID')
+head(blackfriday_user)
+
+nrow(blackfriday_user)
+
+
+# User_ID by Product Category: to see the rev. for each category
+df2 = Cleaned_BlackFriday %>% group_by(User_ID,Product_Category) %>% dplyr::summarise(`User Purchase` = sum(Purchase),`Number of Products Sold` = n())
+User_Category = select(Cleaned_BlackFriday, User_ID, Gender, Age, City_Category, Marital_Status, Occupation)
+User_Category = unique(User_Category)
+User_Category = User_Category %>% left_join(df2, by = 'User_ID')
+
+head(User_Category)
+nrow(User_Category)
+
+checkusr<- Cleaned_BlackFriday %>% group_by(City_Category) %>% dplyr::summarise(`Cat count` = Purchase/City_Category)
+
+n_distinct(Cleaned_BlackFriday$Product_ID)
+
+CityCat <- c("City ", "Suburbs", "Countyside")
+names(CityCat) <- c("1","2","3")
+
+#0-17  15102
+#2 18-25  99660
+#3 26-35 219587
+#4 36-45 110013
+#5 46-50  45701
+#6 51-55  38501
+#7   55+  21504
+
+
+# hi i think looking at the Graph we can Hypothesise the purchase by age and city -
+blackfriday_user %>% group_by(City_Category, Age, Gender) %>% dplyr::summarise(n=n(), purchase = sum(`Shopper Purchase`) ,avg = sum(`Shopper Purchase`)/n) %>% 
+    ggplot(aes(x =Age, y = avg/100000, fill=factor(Gender,labels=c("0"="Male", "1"="Female")))) + 
+    geom_col(position="stack") + facet_grid(~City_Category, labeller = labeller(City_Category = CityCat)) + 
+    labs(title = "Average Purchase Comparison  \nby Age and City", tag = '', x="Age Groups", y= "Purchase in Million($)", fill="Gender")  + ##scale_x_discrete(label=c(17="0-17",25="18-25","35"="26-35","45"="36-45","50"="46-50","55"="51-55","55+")) +
+    theme(plot.title = element_text(size=14, face="bold"), axis.text.x = element_text(angle=60, hjust=1), axis.title.x = element_text(size=12, face="bold"), axis.title.y = element_text(size=12, face="bold"), legend.position="bottom") + scale_fill_brewer(palette="Dark2")
+
+unique(Sam_Cleaned_BlackFriday$Age)
+#####################################
+
+blackfriday_user %>% group_by(City_Category, Age, Gender) %>% dplyr::summarise(n=n(), DistU=n_distinct('User_ID')) %>% 
+    ggplot(aes(x =Age, y = n, fill=factor(Gender,labels=c("0"="Male", "1"="Female")))) + 
+    geom_col(position="stack") + facet_grid(~City_Category, labeller = labeller(City_Category = CityCat)) + 
+    labs(title = "All Users Distribution \nby Age and City", tag = '', x="Age Groups", y= "Distinct Users", fill="Gender")  + ##scale_x_discrete(label=c(17="0-17",25="18-25","35"="26-35","45"="36-45","50"="46-50","55"="51-55","55+")) +
+    theme(plot.title = element_text(size=14, face="bold"), axis.text.x = element_text(angle=60, hjust=1), axis.title.x = element_text(size=12, face="bold"), axis.title.y = element_text(size=12, face="bold"), legend.position="bottom") + scale_fill_brewer(palette="Paired")
+
+table(blackfriday_user$City_Category,blackfriday_user$User_ID)
+
+#================------------------
+
+malesPurchaserData = Sam_Cleaned_BlackFriday[Sam_Cleaned_BlackFriday['Gender'] == 0]
+malesPurchaseMean = np.mean(malesPurchaserData['Purchase'])
+print("Purchase mean for male purchasers = ",malesPurchaseMean)
+
+femalsPurchaserData = data_train.loc[data_train['Gender'] == 'F']
+femalsPurchaseMean = np.mean(femalsPurchaserData['Purchase'])
+print("Purchase mean for femal purchasers = ",femalsPurchaseMean)
+
+
+
+
+getmode <- function(v) {
+    uniqv <- unique(v)
+    uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+result <- 
+    getmode(Cleaned_BlackFriday$Age)
+
+getmode(Cleaned_BlackFriday$Purchase)
+getmode(Cleaned_BlackFriday)
+
+
+
+
+sum(Cleaned_BlackFriday$City_Category)
+
+
+
+p1 = Cleaned_BlackFriday %>% filter(City_Category == '1') %>% group_by(City_Category,Age) %>% summarise(n = n_distinct(User_ID)) %>% mutate(prop = percent(n/1045)) %>% 
+    ggplot(aes(x="", y=n, fill=NULL),inherit.aes = FALSE) + 
+    geom_bar(width = 1, stat = 'identity', position= "stack") + 
+    coord_polar("y") +   
+    geom_text(aes(label = prop), position = position_stack(vjust = 0.8), size = 3)+theme_void()+ theme(plot.title = element_text(size=14, face="bold"),axis.text = element_blank(),axis.ticks = element_blank(),panel.grid  = element_blank(),axis.title=element_blank(), legend.title = NULL,legend.position="bottom") +labs(tag = 'Figure 1\n') +labs(subtitle = "City A")
+
+p2= blackfriday_clean %>% filter(City_Category == 'B') %>% group_by(City_Category,Age) %>% summarise(n = n_distinct(User_ID)) %>%mutate(prop = percent(n/1707)) %>% ggplot(aes(x="", y=n, fill=Age)) + geom_bar(width = 1, stat = 'identity', position= "stack") + coord_polar("y") +geom_text(aes(label = prop), position = position_stack(vjust = 0.8), size = 3)+theme_void()+ theme(plot.title = element_text(size=14, face="bold"),axis.text = element_blank(),axis.ticks = element_blank(),panel.grid  = element_blank(),axis.title=element_blank(),legend.position="bottom") +labs(title = 'Age Distribution for Each City',subtitle = "City B")
+
+p3=blackfriday_clean %>% filter(City_Category == 'C') %>% group_by(City_Category,Age) %>% summarise(n = n_distinct(User_ID)) %>%mutate(prop = percent(n/3139)) %>% 
+    ggplot(aes(x="", y=n, fill=Age)) + 
+    geom_bar(width = 1, stat = 'identity', position= "stack") + coord_polar("y") +
+    geom_text(aes(label = prop), position = position_stack(vjust = 0.8), size = 3)+ theme_void() +
+    theme(plot.title = element_text(size=14, face="bold"),
+          axis.text.x = element_blank(),
+          axis.ticks = element_blank(),
+          panel.grid  = element_blank(), 
+          axis.title=element_blank(), legend.position="bottom")  +
+    labs(subtitle = "City C")
+
+ggarrange(p1,p2,p3, ncol = 3, nrow = 1, common.legend = TRUE, legend = 'bottom', align = 'v', widths = c(1, 1, 1))
+
+
+
+
+sd()
+
+age35 <- group_by(City_Category,Age) Cleaned_BlackFriday$Age["26-35"]
+
+
+
+gender=as.data.frame(blackfriday_clean %>% group_by(Gender) %>% summarise(`Number of Distinct shoppers` = n_distinct(`User_ID`)))
+knitr::kable(as.data.table(gender), caption = "Table 1:  Gender")
+
+
+
+# Summarize by City - To focus which City generates more revenue and also avg purchase per shopper
+avg_district = as.data.frame(Cleaned_BlackFriday %>% 
+                                 group_by(City_Category) %>% 
+                                 dplyr:: summarise(`Product Revenue` = sum(Purchase), 
+                                                   `Number of Distinct shoppers` = n_distinct(`User_ID`), 
+                                                   `Number of Product` = n(),  
+                                                   `Avg. Unit Price per Product` = `Product Revenue`/`Number of Product`,
+                                                   `Product per Shopper` = round(`Number of Product`/`Number of Distinct shoppers`,0)))
+knitr::kable(as.data.table(avg_district), caption = "Summary by Each City")
+
+nrow(Cleaned_BlackFriday$User_ID="1000019")
+
+nrow(count(Cleaned_BlackFriday$User_ID, Cleaned_BlackFriday$City_Category))
+
+nrow(count(Cleaned_BlackFriday$City_Category))
+
+Agecol <- table(Cleaned_BlackFriday$Age)
+
+barplot(Agecol, col = "cyan4",  main = "Age Group Buying Most", xlab = "Age", ylab = "Purchases")
+
+head(Cleaned_BlackFriday)
+
+glimpse(Cleaned_BlackFriday)

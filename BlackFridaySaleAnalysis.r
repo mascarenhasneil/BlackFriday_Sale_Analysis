@@ -63,3 +63,120 @@ head(OblackFriday)
 nrow(OblackFriday)
 
 sum(complete.cases(OblackFriday))
+
+
+
+#We find there are below no of rows which aare not NA that is missing data. to furhet analyssis we need to clean the data and proceed.
+# We need to drop the columns so to avoid incorrect analysis.
+
+
+FilterBlackFriday <-  dplyr::select(OblackFriday, 
+                                    -Stay_In_Current_City_Years,
+                                    -Product_Category_2, 
+                                    -Product_Category_3)
+
+head(FilterBlackFriday)
+
+# Factoring each column to have limited number of different values
+
+table(str(FilterBlackFriday))
+
+FilterBlackFriday$Product_ID = factor(FilterBlackFriday$Product_ID)
+
+FilterBlackFriday$Gender = factor(FilterBlackFriday$Gender)
+
+FilterBlackFriday$Age = factor(FilterBlackFriday$Age)
+
+FilterBlackFriday$Occupation = factor(FilterBlackFriday$Occupation)
+
+FilterBlackFriday$City_Category = factor(FilterBlackFriday$City_Category)
+
+FilterBlackFriday$Stay_In_Current_City_Years  = factor(FilterBlackFriday$Stay_In_Current_City_Years )
+
+FilterBlackFriday$Marital_Status = factor(FilterBlackFriday$Marital_Status)
+
+FilterBlackFriday$Product_Category_1 = factor(FilterBlackFriday$Product_Category_1 )
+
+FilterBlackFriday$Purchase = factor(FilterBlackFriday$Purchas)
+
+
+# Renameing colums for better understaning
+
+#names(FilterBlackFriday)[7] <- 'Years_InCurr_City'
+names(FilterBlackFriday)[8] <- 'Product_Category'
+
+head(FilterBlackFriday)
+str(FilterBlackFriday)
+
+count(FilterBlackFriday$Age)
+
+
+
+class(FilterBlackFriday)
+
+Cleaned_BlackFriday <- FilterBlackFriday
+
+Cleaned_BlackFriday <- subset(Cleaned_BlackFriday, 
+                              select = -c(Years_InCurr_City))
+
+Cleaned_BlackFriday$User_ID <- as.numeric(FilterBlackFriday$User_ID)
+
+Cleaned_BlackFriday$Product_ID <- as.numeric(FilterBlackFriday$Product_ID)
+
+Cleaned_BlackFriday$Gender <- as.numeric(ifelse(FilterBlackFriday$Gender=="M", 1, 0))
+
+Cleaned_BlackFriday$Age <- as.numeric(ifelse(FilterBlackFriday$Age=='0-17', 17, 
+                                             ifelse(FilterBlackFriday$Age=='18-25', 25, 
+                                                    ifelse(FilterBlackFriday$Age=='26-35', 35, 
+                                                           ifelse(FilterBlackFriday$Age=='36-45', 45, 
+                                                                  ifelse(FilterBlackFriday$Age=='46-50', 48, 
+                                                                         ifelse(FilterBlackFriday$Age=='51-55', 55, 62)))))))
+
+Cleaned_BlackFriday$Years_InCurr_City <- as.numeric(FilterBlackFriday$Years_InCurr_City)
+
+
+Cleaned_BlackFriday$Marital_Status <- as.numeric(FilterBlackFriday$Marital_Status)
+
+Cleaned_BlackFriday$Occupation <- as.numeric(FilterBlackFriday$Occupation)
+
+Cleaned_BlackFriday$City_Category <- as.numeric(ifelse(FilterBlackFriday$City_Category=='A', 1, 
+                                                       ifelse(FilterBlackFriday$City_Category=='B', 2, 3)))
+
+Cleaned_BlackFriday$Product_Category <- as.numeric(FilterBlackFriday$Product_Category)
+
+Cleaned_BlackFriday$Purchase <- as.numeric(FilterBlackFriday$Purchase)
+
+
+head(Cleaned_BlackFriday)
+
+str(Cleaned_BlackFriday)
+
+summary(Cleaned_BlackFriday)
+as.data.frame(names(OblackFriday))
+
+as.data.frame(names(Cleaned_BlackFriday))
+
+
+length(unique(Cleaned_BlackFriday$User_ID))
+
+str(Cleaned_BlackFriday)
+
+count(Cleaned_BlackFriday$Age)
+count(Cleaned_BlackFriday$Occupation)
+count(Cleaned_BlackFriday$City_Category)
+count(Cleaned_BlackFriday$Years_InCurr_City)
+count(Cleaned_BlackFriday$Marital_Status)
+count(Cleaned_BlackFriday$Product_Category)
+count(Cleaned_BlackFriday$Purchase)
+
+
+nrow(Cleaned_BlackFriday)
+
+is.factor(FilterBlackFriday$User_ID)
+
+length(FilterBlackFriday$User_ID)
+
+# Export the dataset
+
+write.csv(Cleaned_BlackFriday,'Data/Cleaned_BlackFriday.csv')
+

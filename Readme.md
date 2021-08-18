@@ -128,7 +128,31 @@ Distributed under the GPL v3 License. See **[LICENSE](https://github.com/mascare
 Project Link: [https://mascarenhasneil.github.io/BlackFriday_Sale_Analysis/](https://mascarenhasneil.github.io/BlackFriday_Sale_Analysis/)
 
 
+## References
+<details>
+  <summary>Click to expand!</summary>
 
+
+1. *4 awesome customer Segmentation examples (and why they work)*. (2020, February 19). Retrieved February 25, 2021, from https://manychat.com/blog/customer-segmentation-examples/
+
+1. *8 ways to enhance your content marketing with social media.* (n.d.). Retrieved February 25, 2021, from https://www.brandwatch.com/blog/marketing-8-ways-social-listening-can-benefit-your-content-marketing/
+
+1. *Bar charts - geom_bar.* (n.d.). Retrieved February 25, 2021, from https://ggplot2.tidyverse.org/reference/geom_bar.html
+
+1. *Chandel, S. (2018, November 12)*. Black-Friday-Dataset. Retrieved February 19, 2021, from https://github.com/shwetachandel/Black-Friday-Dataset.
+
+1. *Create elegant data visualisations using the grammar of graphics.* (n.d.). Retrieved February 24, 2021, from https://ggplot2.tidyverse.org/
+
+1. *Ggplot2 barplots : Quick start guide - r software and data visualization.* (n.d.). Retrieved February 21, 2021, from http://www.sthda.com/english/wiki/ggplot2-barplots-quick-start-guide-r-software-and-data-visualization
+
+1. *Holtz, Y. (n.d.). Basic barplot with ggplot2.* Retrieved February 25, 2021, from https://www.r-graph-gallery.com/218-basic-barplots-with-ggplot2.html
+
+1. *Kabacoff, R. (2015). R in action: Data analysis and graphics with R.* Shelter Island, NY: Manning.
+
+1. Munjal, H. (n.d.). *7 tips to increase your black friday sales.* Retrieved February 25, 2021, from https://learn.g2.com/increase-black-friday-sales
+
+
+</details>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->

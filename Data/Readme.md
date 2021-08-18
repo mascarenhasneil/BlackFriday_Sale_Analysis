@@ -2,6 +2,7 @@
 
 1. blackfriday.csv
 1. Cleaned_BlackFriday.csv
+1. Sampled_Cleaned_BlackFriday.csv
 
 ## Dataset Source
 1. **Added Soon**

@@ -38,11 +38,47 @@
   </p>
 </p>
 
+
+### Direct Questions that can be framed are
+
+Based on the data- we can create data that are understandable for a human eye are
+1.	Age
+2.	Gender
+3.	Occupation- we can try
+4.	City category
+5.	Marital status
+
+### Rest of the variables are high in numbers and we would be needing more data. On the outlook we can create question and visualizations on the above-mentioned variables
+
+## Questions: 
+
+1.	Number of purchases based on the age
+1.	Number of purchases made based on the marital status
+1.	We can do the plots age and marital status
+1.	Number of purchases based on the city category- arrange is descending order
+1.	Number of purchases based on the gender and  age
+1.	Plot purchases based on the gender and age
+1.	Plot on gender, marital status, and age
+1.	We can make plot based on the purchases based on occupation, say we arrange the occupation and purchase in descending order, we can assume with more purchases will be having better income- have top 5 spenders
+1.	Based on gender we can bifurcate the product categories- particular product categories bought by males and females- we can do it by arranging them in descending order
+1.	Based on this we can have target ads
+
+<p align="justify">
+Just to get started, we had business study, once we did it, we analyzed that we can create more insights based on the above data. If anyone has different approach, we can try that as well and come up with visualizations.
+</p>
+
+
+
 ### Our Paper Presentation Slides (Coming Soon)
 
 
 <!-- ROADMAP -->
 ## Roadmap
+
+<p align="justify">
+Just to get started, we had business study, once we did it, we analyzed that we can create more insights based on the above data. If anyone has different approach, we can try that as well and come up with visualizations.
+</p>
+
 
 See the [open issues](https://github.com/mascarenhasneil/BlackFriday_Sale_Analysis/issues) for a list of proposed features (and known issues)
 
@@ -72,9 +108,10 @@ Distributed under the GPL v3 License. See **[LICENSE](https://github.com/mascare
 ## Contact
 
 ### Team Members: 
-1. Aswin Kumar Rajendran 
-1. Chaya Kotturesh 
 1. Neil Mascarenhas - [About me?](https://about.me/neilmascarenhas)
+1. Palak Agarwal
+1. Shivaprasad Chandrashekarappa
+1. Sushma Karjol
 
 
 Project Link: [https://mascarenhasneil.github.io/BlackFriday_Sale_Analysis/](https://mascarenhasneil.github.io/BlackFriday_Sale_Analysis/)

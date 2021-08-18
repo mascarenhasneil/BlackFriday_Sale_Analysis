@@ -69,7 +69,18 @@ Just to get started, we had business study, once we did it, we analyzed that we 
 
 
 
-### Our Paper Presentation Slides (Coming Soon)
+### Our Paper Presentation Slides
+
+||||
+|-|-|-|
+| ![Slide 1](Presentation-Slides/Slide1.PNG?raw=true "Slide 1")|![Slide 2](Presentation-Slides/Slide2.PNG?raw=true "Slide 2")|![Slide 3](Presentation-Slides/Slide3.PNG?raw=true "Slide 3")|
+| ![Slide 4](Presentation-Slides/Slide4.PNG?raw=true "Slide 4")|![Slide 5](Presentation-Slides/Slide5.PNG?raw=true "Slide 5")|![Slide 6](Presentation-Slides/Slide6.PNG?raw=true "Slide 6")|
+| ![Slide 7](Presentation-Slides/Slide7.PNG?raw=true "Slide 7")|![Slide 8](Presentation-Slides/Slide8.PNG?raw=true "Slide 8")|![Slide 9](Presentation-Slides/Slide9.PNG?raw=true "Slide 9")|
+| ![Slide 10](Presentation-Slides/Slide10.PNG?raw=true "Slide 10")|![Slide 11](Presentation-Slides/Slide11.PNG?raw=true "Slide 11")|![Slide 12](Presentation-Slides/Slide12.PNG?raw=true "Slide 12")|
+| ![Slide 13](Presentation-Slides/Slide13.PNG?raw=true "Slide 13")|![Slide 14](Presentation-Slides/Slide14.PNG?raw=true "Slide 14")|![Slide 15](Presentation-Slides/Slide15.PNG?raw=true "Slide 15")|
+| ![Slide 16](Presentation-Slides/Slide16.PNG?raw=true "Slide 16")|![Slide 17](Presentation-Slides/Slide17.PNG?raw=true "Slide 17")|![Slide 18](Presentation-Slides/Slide18.PNG?raw=true "Slide 18")|
+| ![Slide 19](Presentation-Slides/Slide19.PNG?raw=true "Slide 19")|![Slide 20](Presentation-Slides/Slide20.PNG?raw=true "Slide 20")|![Slide 21](Presentation-Slides/Slide21.PNG?raw=true "Slide 21")|
+| ![Slide 22](Presentation-Slides/Slide22.PNG?raw=true "Slide 22")|![Slide 23](Presentation-Slides/Slide23.PNG?raw=true "Slide 23")|![Slide 24](Presentation-Slides/Slide24.PNG?raw=true "Slide 24")|
 
 
 <!-- ROADMAP -->
